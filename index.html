@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Movie Explorer</h1>
+        <nav>
+          <input id="searchInput" type="text" placeholder="Search for movies...">
+          <button id="searchBtn">Search</button>
+        </nav>
+      </header>
+  <main>
+    <section id="trendingSection">
+      <h2>Trending Movies</h2>
+      <div id="trendingMovies" class="movie-scroll"></div>
+    </section>
+    <section id="popularSection">
+      <h2>Popular Movies</h2>
+      <div id="popularMovies" class="movie-scroll"></div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

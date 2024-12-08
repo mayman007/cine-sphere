@@ -1,0 +1,121 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+}
+
+nav {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+nav input {
+  padding: 10px;
+  width: 200px;
+}
+
+nav button {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background-color: #555;
+}
+
+section {
+  margin: 20px;
+}
+
+section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.movie-scroll {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+}
+
+.movie-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.movie-scroll::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+.movie-vertical {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+.movie {
+  flex: 0 0 150px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  padding: 10px;
+}
+
+.movie img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.movie h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#movieDetails {
+  max-width: 800px;
+  margin: 20px auto;
+  text-align: center;
+}
+
+#movieDetails img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+#movieDetails p {
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+/* Remove link styling */
+header a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit the color from the parent (header) */
+}
+
+header a h1 {
+  margin: 0; /* Remove default margin from the h1 tag */
+  font-size: 2em; /* You can adjust the size as needed */
+}
