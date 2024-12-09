@@ -38,20 +38,21 @@ async function fetchPopularMovies() {
 // Display movies in a container
 function displayMovies(movies, container) {
   container.innerHTML = '';
-  movies.forEach((movie) => {
-    const movieItem = document.createElement('div');
-    movieItem.classList.add('movie');
-    movieItem.innerHTML = `
-      <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-      <h3>${movie.title}</h3>
-    `;
-    movieItem.addEventListener('click', () => {
-      window.location.href = `details.html?movieId=${movie.id}`;
+  movies
+    .filter((movie) => !movie.adult) // Exclude adult movies
+    .forEach((movie) => {
+      const movieItem = document.createElement('div');
+      movieItem.classList.add('movie');
+      movieItem.innerHTML = `
+        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+        <h3>${movie.title}</h3>
+      `;
+      movieItem.addEventListener('click', () => {
+        window.location.href = `details.html?movieId=${movie.id}`;
+      });
+      container.appendChild(movieItem);
     });
-    container.appendChild(movieItem);
-  });
 }
-
 // Perform search and redirect to search.html
 function performSearch() {
   const query = searchInput.value.trim();

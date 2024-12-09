@@ -20,13 +20,14 @@ if (query) {
 async function fetchSearchResults(query) {
   try {
     const response = await fetch(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&language=en-US&query=${encodeURIComponent(query)}`
+      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=en-US`
     );
     const data = await response.json();
-    displayMovies(data.results || []);
+    const filteredMovies = data.results.filter((movie) => !movie.adult); // Exclude adult movies
+    displayMovies(filteredMovies, document.getElementById('searchResults'));
   } catch (error) {
     console.error('Error fetching search results:', error);
-    searchResultsContainer.innerHTML = '<p>Error fetching search results.</p>';
+    document.getElementById('searchResults').innerHTML = '<p>Error loading search results.</p>';
   }
 }
 
