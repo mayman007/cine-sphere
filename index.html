@@ -1,29 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie Explorer</title>
-  <link rel="stylesheet" href="styles/styles.css">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine Sphere - Watch TV Showes</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+    rel="stylesheet"
+    />
+    
 </head>
 <body>
-    <header>
-        <h1>Movie Explorer</h1>
-        <nav>
-          <input id="searchInput" type="text" placeholder="Search for movies...">
-          <button id="searchBtn">Search</button>
-        </nav>
-      </header>
-  <main>
-    <section id="trendingSection">
-      <h2>Trending Movies</h2>
-      <div id="trendingMovies" class="movie-scroll"></div>
-    </section>
-    <section id="popularSection">
-      <h2>Popular Movies</h2>
-      <div id="popularMovies" class="movie-scroll"></div>
-    </section>
-  </main>
-  <script src="scripts/script.js"></script>
+  <div class="container">
+    <div class="background-slider"></div>
+    <div class="overlay"></div>
+    
+    <header class="header">
+        <img src="images/WhatsAppImage2024-12-06at06.40.16_6b80b25b.png" class="logo">
+    </header>
+
+    <main class="hero">
+        <div class="hero-content">
+            <h1>Unlimited movies, TV shows, and more</h1>
+            <p class="price">Starts at <span>EGP 70</span>. Cancel anytime.</p>
+            <p class="cta-text">Search for any movie you want to see</p>
+            <form class="email-form">
+              <input type="text" placeholder="Search a movie" required>
+              <button type="submit">Search</button>
+          </form>
+        </div>
+    </main>
+  </div>
+
+    <div class="container">
+      <!-- Trending Now Section -->
+      <section class="section">
+        <div class="trending-wrapper">
+          <!-- Movie Row -->
+          <div class="movie-row">
+            <section id="trendingSection">
+              <h2>Trending Now</h2>
+              <div id="trendingMovies" class="movie-scroll"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- More Reasons to Join-->
+    <div class="container">
+      <section class="section">
+      <h1>More Reasons to Join</h1>
+      <div class="card-container">
+          <div class="card">
+              <h2>Enjoy on your TV</h2>
+              <p>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</p>
+          </div>
+          <div class="card">
+              <h2>Download your shows to watch offline</h2>
+              <p>Save your favorites easily and always have something to watch.</p>
+          </div>
+          <div class="card">
+              <h2>Watch everywhere</h2>
+              <p>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</p>
+          </div>
+          <div class="card">
+              <h2>Create profiles for kids</h2>
+              <p>Send kids on adventures with their favorite characters in a space made just for them — free with your membership.</p>
+          </div>
+      </div>
+  </div>
+
+    <!-- FAQ Section -->
+    <div class="faq-container">
+      <h1>Frequently Asked Questions</h1>
+
+      <div class="faq-item">
+        <div class="question" onclick="toggleAnswer(this)">
+          What is Cinesphere?
+        </div>
+        <div class="answer">
+          Cinesphere is a streaming service that offers a wide variety of
+          award-winning TV shows, movies, anime, documentaries, and more on
+          thousands of internet-connected devices.<br />
+          You can watch as much as you want, whenever you want without a single
+          commercial – all for one low monthly price. There's always something
+          new to discover and new TV shows and movies are added every week!
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="question" onclick="toggleAnswer(this)">
+          How much does Cinesphere cost?
+        </div>
+        <div class="answer">
+          Cinesphere offers different membership plans to suit your needs. Check
+          out the website for the most updated pricing information.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="question" onclick="toggleAnswer(this)">
+          Where can I watch?
+        </div>
+        <div class="answer">
+          You can watch on any internet-connected device that offers the
+          Cinesphere app, such as smart TVs, game consoles, streaming media
+          players, set-top boxes, smartphones, and tablets.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="question" onclick="toggleAnswer(this)">
+          How do I cancel?
+        </div>
+        <div class="answer">
+          Cinesphere is flexible. There are no contracts and no cancellation
+          fees. You can easily cancel your account online in two clicks.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="question" onclick="toggleAnswer(this)">
+          Is Cinesphere good for kids?
+        </div>
+        <div class="answer">
+          The Cinesphere Kids experience is included in your membership to give
+          parents control while kids enjoy family-friendly TV shows and movies
+          in their own space.
+        </div>
+      </div>
+    </div>
+
+  <footer class="header">
+        <a href="index.html" class="home-btn">
+            Home
+        </a>
+        <a href="#" class="about-btn">
+            About Us
+        </a>
+        <a href="planss.html" class="sup-btn">
+            Subscriptions
+        </a>
+  </footer>
+  <script src="scripts/script.js"></script> 
 </body>
 </html>

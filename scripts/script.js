@@ -1,76 +1,70 @@
-const API_KEY = '88e33dbae5dc0466a7b81109029e5b6c';
-const BASE_URL = 'https://api.themoviedb.org/3';
+const BASE_URL = "https://api.themoviedb.org/3";
+const API_KEY = "88e33dbae5dc0466a7b81109029e5b6c";
 
 // DOM Elements
-const trendingContainer = document.getElementById('trendingMovies');
-const popularContainer = document.getElementById('popularMovies');
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('searchBtn');
+const trendingSection = document.getElementById("trendingMovies");
+const popularSection = document.getElementById("popularMovies");
 
 // Fetch trending movies
-async function fetchTrendingMovies() {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/trending/movie/day?api_key=${API_KEY}&language=en-US`
-    );
-    const data = await response.json();
-    displayMovies(data.results, trendingContainer);
-  } catch (error) {
-    console.error('Error fetching trending movies:', error);
-    trendingContainer.innerHTML = '<p>Error loading trending movies.</p>';
-  }
+function fetchTrendingMovies() {
+    fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`)
+        .then(response => response.json())
+        .then(data => displayMovies(data.results, trendingSection))
+        .catch(error => console.error("Error fetching trending movies:", error));
 }
 
 // Fetch popular movies
-async function fetchPopularMovies() {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US`
-    );
-    const data = await response.json();
-    displayMovies(data.results, popularContainer);
-  } catch (error) {
-    console.error('Error fetching popular movies:', error);
-    popularContainer.innerHTML = '<p>Error loading popular movies.</p>';
-  }
+function fetchPopularMovies() {
+    fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`)
+        .then(response => response.json())
+        .then(data => displayMovies(data.results, popularSection))
+        .catch(error => console.error("Error fetching popular movies:", error));
 }
 
-// Display movies in a container
+// Display movies in a specific section
 function displayMovies(movies, container) {
-  container.innerHTML = '';
-  movies
-    .filter((movie) => !movie.adult) // Exclude adult movies
-    .forEach((movie) => {
-      const movieItem = document.createElement('div');
-      movieItem.classList.add('movie');
-      movieItem.innerHTML = `
-        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-        <h3>${movie.title}</h3>
-      `;
-      movieItem.addEventListener('click', () => {
-        window.location.href = `details.html?movieId=${movie.id}`;
-      });
-      container.appendChild(movieItem);
+    container.innerHTML = ""; // Clear previous content
+
+    movies.forEach(movie => {
+        if (!movie.adult) { // Exclude adult movies
+            const movieElement = document.createElement("div");
+            movieElement.classList.add("movie");
+            movieElement.innerHTML = `
+                <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+                <h3>${movie.title}</h3>
+            `;
+            movieElement.addEventListener("click", () => {
+                window.location.href = `details.html?movieId=${movie.id}`;
+            });
+            container.appendChild(movieElement);
+        }
     });
 }
-// Perform search and redirect to search.html
-function performSearch() {
-  const query = searchInput.value.trim();
-  if (query) {
-    window.location.href = `search.html?query=${encodeURIComponent(query)}`;
-  } else {
-    alert('Please enter a search term!');
-  }
+
+// Search functionality
+function handleSearch(event) {
+    event.preventDefault(); // Prevent form reload
+    const searchInput = document.querySelector(".email-form input");
+    const query = searchInput.value.trim();
+
+    if (query) {
+        // Redirect to search.html with the query as a URL parameter
+        window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+    }
 }
 
-// Event listeners for search button and "Enter" key
-searchBtn.addEventListener('click', performSearch);
-searchInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    performSearch();
-  }
-});
+// Add search event listener
+document.querySelector(".email-form").addEventListener("submit", handleSearch);
 
-// Fetch trending and popular movies on page load
+// Initialize the trending and popular movies
 fetchTrendingMovies();
 fetchPopularMovies();
+
+
+function toggleAnswer(element) {
+  // تحديد العنصر الأب (faq-item)
+  const faqItem = element.parentElement;
+
+  // تبديل الكلاس 'active' لعرض الإجابة أو إخفائها
+  faqItem.classList.toggle('active');
+}

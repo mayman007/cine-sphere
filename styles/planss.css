@@ -1,0 +1,154 @@
+/* Plans Page Specific Styles */
+.plans-container {
+    position: relative;   /*!!!!*/
+    max-width: 1400px;
+    margin: 0 0 0 260px;
+    padding: 160px;
+    min-height: 120vh;
+}
+
+.plans-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.plans-header h2 {
+    font-size: 40px;
+    margin-bottom: 18px;
+}
+
+.plans-header p {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* Plans Grid */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /*!!!!*/
+    gap: 30px;
+ 
+}
+
+.plan-card {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+    border: 1px solid #e50914;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+
+.plan-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.plan-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.price-container {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.currency {
+    font-size: 30px;
+}
+
+.period {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.plan-features li {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.plan-features i {
+    color: #e50914;
+}
+
+.plan-button-b{
+    width: 100%;
+    padding: 1rem;
+    margin-top: 90px;
+    background: #e50914;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+
+}
+.plan-button-s{
+    width: 100%;
+    padding: 1rem;
+    margin-top: 55px;
+    background: #e50914;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+.plan-button-p{
+    width: 100%;
+    padding: 1rem;
+    margin-top: 20px;
+    background: #e50914;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.plan-button-b:hover {
+    background: #c11119;
+}
+.plan-button-s:hover {
+    background: #c11119;
+}
+.plan-button-p:hover {
+    background: #c11119;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .plans-container {
+        padding: 1rem;
+    }
+
+    .plans-header h2 {
+        font-size: 2rem;
+    }
+
+    .plans-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .plan-card {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+}

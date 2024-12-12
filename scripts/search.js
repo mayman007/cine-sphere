@@ -1,71 +1,99 @@
-const API_KEY = '88e33dbae5dc0466a7b81109029e5b6c';
-const BASE_URL = 'https://api.themoviedb.org/3';
+document.addEventListener('DOMContentLoaded', () => {
+    const BASE_URL = "https://api.themoviedb.org/3";
+    const API_KEY = "88e33dbae5dc0466a7b81109029e5b6c";
+    const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
-// Extract query from URL
-const urlParams = new URLSearchParams(window.location.search);
-const query = urlParams.get('query');
+    // DOM elements
+    const searchInput = document.getElementById("searchInput");
+    const searchBtn = document.getElementById("searchBtn");
+    const searchResultsContainer = document.getElementById("searchResults");
 
-// DOM Elements
-const searchInput = document.getElementById('searchInput');
-const searchBtn = document.getElementById('searchBtn');
-const searchResultsContainer = document.getElementById('searchResults');
+    // Function to display movies
+    function displayMovies(movies) {
+        searchResultsContainer.innerHTML = ""; // Clear previous results
+        
+        if (movies.length === 0) {
+            searchResultsContainer.innerHTML = "<p style='color: white; text-align: center;'>No results found.</p>";
+            return;
+        }
 
-// Pre-fill search input with query
-if (query) {
-  searchInput.value = query;
-  fetchSearchResults(query);
-}
+        movies.forEach(movie => {
+            // Skip adult and movies without poster
+            if (!movie.adult && movie.poster_path) {
+                const movieElement = document.createElement("div");
+                movieElement.classList.add("movie");
+                
+                // Create movie card content
+                movieElement.innerHTML = `
+                    <img src="${IMG_URL}${movie.poster_path}" alt="${movie.title}">
+                    <h3><span class="movie-title">${movie.title}</span></h3>
+                `;
+                
+                // Add event listener to the entire movie card (not just the title)
+                movieElement.addEventListener('click', () => {
+                    window.location.href = `details.html?movieId=${movie.id}`; // Redirect to the movie details page
+                });
+                
+                // Append the movie card to the results container
+                searchResultsContainer.appendChild(movieElement);
+            }
+        });
+    }
 
-// Fetch and display search results
-async function fetchSearchResults(query) {
-  try {
-    const response = await fetch(
-      `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=en-US`
-    );
-    const data = await response.json();
-    const filteredMovies = data.results.filter((movie) => !movie.adult); // Exclude adult movies
-    displayMovies(filteredMovies, document.getElementById('searchResults'));
-  } catch (error) {
-    console.error('Error fetching search results:', error);
-    document.getElementById('searchResults').innerHTML = '<p>Error loading search results.</p>';
-  }
-}
+    // Format release date
+    function formatReleaseDate(dateString) {
+        if (!dateString) return 'Unknown';
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'short', 
+            day: 'numeric' 
+        });
+    }
 
-// Display movies
-function displayMovies(movies) {
-  searchResultsContainer.innerHTML = '';
-  if (movies.length === 0) {
-    searchResultsContainer.innerHTML = '<p>No movies found.</p>';
-    return;
-  }
-  movies.forEach((movie) => {
-    const movieItem = document.createElement('div');
-    movieItem.classList.add('movie');
-    movieItem.innerHTML = `
-      <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
-      <h3>${movie.title}</h3>
-    `;
-    movieItem.addEventListener('click', () => {
-      window.location.href = `details.html?movieId=${movie.id}`;
+    // Search movies function
+    function performSearch(query) {
+        if (!query) {
+            searchResultsContainer.innerHTML = "<p style='color: white; text-align: center;'>Please enter a search term.</p>";
+            return;
+        }
+
+        // Reload the page with the search query in the URL
+        window.location.href = `search.html?query=${encodeURIComponent(query)}`;
+    }
+
+    // Search button event listener
+    searchBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const query = searchInput.value.trim();
+        performSearch(query);
     });
-    searchResultsContainer.appendChild(movieItem);
-  });
-}
 
-// Search functionality for the new page
-function performSearch() {
-  const newQuery = searchInput.value.trim();
-  if (newQuery) {
-    window.location.href = `search.html?query=${encodeURIComponent(newQuery)}`;
-  } else {
-    alert('Please enter a search term!');
-  }
-}
+    // Enter key event listener
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const query = searchInput.value.trim();
+            performSearch(query);
+        }
+    });
 
-// Event listeners for search button and "Enter" key
-searchBtn.addEventListener('click', performSearch);
-searchInput.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    performSearch();
-  }
-})
+    // Check if there's an initial query from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get("query");
+    
+    if (query) {
+        searchInput.value = query;
+        
+        // Fetch and display movies based on the query
+        fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(data => {
+                displayMovies(data.results);
+            })
+            .catch(error => {
+                console.error("Error fetching search results:", error);
+                searchResultsContainer.innerHTML = "<p style='color: white; text-align: center;'>Something went wrong. Please try again later.</p>";
+            });
+    }
+});

@@ -1,57 +1,242 @@
-body {
-  font-family: Arial, sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
-header {
-  background-color: #333;
+ body {
+  font-family: Arial, sans-serif;
+  background-color: #141414;
   color: #fff;
-  padding: 15px;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  position: relative;
+  color: white;
+  /* max-width: 1200px; */
+  /* margin: 20px auto; */
+  padding: 0 15px;
+} 
+
+.background-slider {
+  position: absolute;   /*!!!!*/
+  inset: 0;    /*!!!!*/
+  background-image: url("../images/netflix-octobre-contenus-2022.jpg");
+  background-size:cover;
+  background-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, 
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.5) 50%,
+      rgba(0, 0, 0, 0.9) 100%
+  );
+}
+
+.header {
+  position: absolute;  /*!!!!*/
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 170px;
+}
+
+.logo {
+  width: 250px;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 30px;
+}
+
+.about-btn, .signin-btn, .sup-btn, .home-btn {
+
+  padding: 10px 30px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.about-btn {
+  background-color: #e50914;
+  color: white;
+  text-decoration: none;
+}
+
+.about-btn:hover {
+ background-color: #c11119;
+}
+
+.home-btn {
+  background-color: #e50914;
+  color: white;
+  text-decoration: none;
+}
+
+.home-btn:hover {
+ background-color: #c11119;
+}
+
+.sup-btn {
+ 
+  background-color: #e50914;
+  color: white;
+  text-decoration: none;
+}
+
+.sup-btn:hover {
+ background-color: #c11119;
+}
+
+.signin-btn {
+  background-color: #e50914;
+  color: white;
+}
+
+.signin-btn:hover {
+  background-color: #c11119;
+}
+
+.hero {
+  position: relative;  /*!!!!*/
+  min-height: 120vh;
+  display: flex;
+  align-items: center;
   text-align: center;
 }
 
-nav {
-  margin-top: 10px;
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: 50px;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.price span {
+  font-weight: 600;
+}
+
+.cta-text {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.email-form {
   display: flex;
-  justify-content: center;
   gap: 10px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-nav input {
+.email-form input {
+  flex: 1;
   padding: 10px;
-  width: 200px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.4);
+  color: white;
+  font-size: 17px;
 }
 
-nav button {
-  background-color: #444;
+.email-form input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.email-form input:focus {
+  outline: none;
+  border-color: #e50914;
+}
+
+.email-form button {
+  padding: 15px 20px;
+  background-color: #e50914;
   color: white;
   border: none;
-  padding: 10px;
+  border-radius: 4px;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
 }
 
-nav button:hover {
-  background-color: #555;
+.email-form button:hover {
+  background-color: #c11119;
 }
 
-section {
-  margin: 20px;
+@media (max-width: 768px) {
+  .hero-content h1 {
+      font-size: 2rem;
+  }
+
+  .email-form {
+      flex-direction: column;
+  }
+
+  .email-form button {
+      width: 100%;
+      justify-content: center;
+  }
 }
 
-section h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
+/* ============================================================================================================================== */
+
+.section {
+    margin-bottom: 30px;
+}
+
+.section h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Trending Wrapper */
+.trending-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.movie-row {
+    display: flex;
+    gap: 15px;
+    padding: 10px 0;
+    overflow-x: auto;  /* Enables horizontal scrolling */
+    scroll-behavior: smooth;  /* Smooth scrolling */
+}
+
+.movie {
+    width: 180px;
+    flex-shrink: 0;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .movie-scroll {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding: 10px 0;
-  scrollbar-width: thin;
-  scrollbar-color: #ccc transparent;
+  display: flex; /* Horizontal layout */
+  gap: 10px; /* Space between movies */
+  padding: 10px; /* Padding around the movies */
 }
 
 .movie-scroll::-webkit-scrollbar {
@@ -70,52 +255,385 @@ section h2 {
 }
 
 .movie {
-  flex: 0 0 150px;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
+  flex: 0 0 auto; /* Ensure each movie item stays its own size */
+  width: 150px; /* Adjust based on movie poster size */
   text-align: center;
-  padding: 10px;
 }
 
 .movie img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
+  width: 100%; /* Make the image fill the width of its container */
+  border-radius: 10px; /* Optional: Rounded corners */
 }
 
-.movie h3 {
-  margin: 10px 0;
-  font-size: 16px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+/* Hover Effect */
+.movie:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
 }
 
-#movieDetails {
-  max-width: 800px;
-  margin: 20px auto;
+.movie:hover::after {
+    content: "▶";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 32px;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+/* Arrows */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000;
+}
+
+.arrow.left {
+    left: 0;
+}
+
+.arrow.right {
+    right: 0;
+}
+
+/* Hide arrows when scrolling is not needed */
+.trending-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* FAQ Container */
+.faq-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 200px;
+    border-radius: 10px;
+}
+
+.faq-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+}
+/*  */
+/* عنوان القسم */
+.container h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* إعدادات البطاقات */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ألوان خلفية البطاقات */
+.card:nth-child(1) {
+    background: linear-gradient(to bottom, #3b305a, #22192e);
+}
+
+.card:nth-child(2) {
+    background: linear-gradient(to bottom, #3d1e3c, #220d23);
+}
+
+.card:nth-child(3) {
+    background: linear-gradient(to bottom, #3b2950, #22152c);
+}
+
+.card:nth-child(4) {
+    background: linear-gradient(to bottom, #3a2b44, #1f1628);
+}
+
+.card h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.card p {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #ddd;
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* تأثير hover */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* تأثير hover */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+}
+/* FAQ Item */
+.faq-item {
+    margin-bottom: 15px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.question {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    cursor: pointer;
+    background: linear-gradient(to right, black, rgba(255, 255, 255, 0.521));
+    color: #ffffff;
+    border-radius: 5px;
+    position: relative;
+    transition: transform 0.3s;
+}
+
+.question:hover {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.521), black);
+    transform: scale(1.02);
+    color: black;
+}
+
+.question::after {
+    content: "+";
+    position: absolute;
+    right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+}
+/* Hover Effects */
+.question:hover::after {
+    color: #fff;
+}
+
+.faq-item.active .question::after {
+    content: "x";
+    color: red;
+}
+
+.answer {
+    display: none;
+    padding: 10px;
+    background: linear-gradient(to right, black, rgba(255, 255, 255, 0.453));
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Active State */
+.faq-item.active .answer {
+    display: block;
+}
+
+/* Search Results Page Specific Styles */
+.search-hero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
   text-align: center;
 }
 
-#movieDetails img {
-  max-width: 100%;
+.search-form {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.search-results-section {
+  background-color: #141414;
+  padding: 20px 0;
+}
+
+.search-results-section h2 {
+  color: #fff;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.movie-grid .movie {
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .movie-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+  }
+}
+
+.movie-details-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.movie-details-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.movie-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  padding: 30px;
+  color: white;
+}
+
+.movie-poster img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.movie-rating {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(229, 9, 20, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+.movie-meta-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 15px;
   border-radius: 10px;
 }
 
-#movieDetails p {
-  font-size: 18px;
-  margin: 10px 0;
+.meta-item h3 {
+  color: #888;
+  margin-bottom: 5px;
+  font-size: 0.9em;
 }
 
-/* Remove link styling */
-header a {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Inherit the color from the parent (header) */
+.movie-synopsis, .movie-cast {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
-header a h1 {
-  margin: 0; /* Remove default margin from the h1 tag */
-  font-size: 2em; /* You can adjust the size as needed */
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.cast-member {
+  background-color: #e50914;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+.movie-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.watch-now-btn, .add-to-list-btn {
+  padding: 10px 30px;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.watch-now-btn {
+  background-color: #e50914;
+  color: white;
+}
+
+.watch-now-btn:hover {
+  background-color: #c11119;
+}
+
+.add-to-list-btn {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.add-to-list-btn:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media (max-width: 768px) {
+  .movie-details-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .movie-meta-info {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .movie-actions {
+    flex-direction: column;
+  }
+
+  .watch-now-btn, .add-to-list-btn {
+    width: 100%;
+  }
 }
