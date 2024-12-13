@@ -43,7 +43,7 @@ header nav a:hover {
     text-align: center;
     padding: 100px 20px;
     background-image: linear-gradient(to bottom, rgba(20, 20, 20, 0.7), #141414), 
-                      url('img/aboutbg.jpg');
+                      url('../images/ab');
     color: #ffffff;
 }
 
