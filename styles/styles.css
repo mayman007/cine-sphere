@@ -18,9 +18,6 @@
 .container {
   position: relative;
   color: white;
-  /* max-width: 1200px; */
-  /* margin: 20px auto; */
-  /* padding: 0 15px; */
 } 
 
 .background-slider {
@@ -230,14 +227,6 @@
     align-items: center;
 }
 
-/*.movie-row {
-    display: flex;
-    gap: 15px;
-    padding: 10px 0;
-    overflow-x: auto;  /* Enables horizontal scrolling */
-   /* scroll-behavior: smooth;  /* Smooth scrolling 
-}*/
-
 .movie {
     width: 180px;
     flex-shrink: 0;
@@ -253,30 +242,13 @@
   /* padding: 10px; / Padding around the movies  */
 }
 
-/*.movie-scroll::-webkit-scrollbar {
-  height: 8px;
-}*/
-
-/*.movie-scroll::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-  border-radius: 4px;
-}*/
-
-/*.movie-vertical {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-}*/
-
 .movie {
   flex: 0 0 auto; /* Ensure each movie item stays its own size */
   width: 150px; /* Adjust based on movie poster size */
-  /* text-align: center; */
 }
 
 .movie img {
   width: 100%; /* Make the image fill the width of its container */
-  /* border-radius: 10px;  Optional: Rounded corners  */
 }
 
 /* Hover Effect */
@@ -297,53 +269,14 @@
     opacity: 0.8;
 }
 
-/*.arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 10px;
-  z-index: 10;
-  border-radius: 50%;
-  transition: background-color 0.3s ease;
-}
-
-.arrow:hover {
-  background-color: rgba(255, 255, 255, 0.7);
-  color: #000;
-}
-
-.arrow.left {
-  left: 0;
-}
-
-.arrow.right {
-  right: 0;
-}*/
-
-
-/* Hide arrows when scrolling is not needed */
-/*.trending-wrapper {
-    position: relative;
-    overflow: hidden;
-}*/
-
-
 /* General Reset */
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
 }
 /* FAQ Container */
 .faq-container {
     max-width: 100%;
-    /* margin: 0 auto; */
-    /* padding: 200px; */
     border-radius: 10px;
     padding-bottom: 100px;
 }
@@ -354,13 +287,6 @@
     text-align: center;
     color: #fff;
 }
-/*  */
-/* عنوان القسم */
-/*.container h1 {
-    font-size: 38px;
-    margin-bottom: 20px;
-    padding-left: 700px;
-}*/
 
 .Mcontainer{
   padding-top: 40px;
@@ -395,24 +321,6 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     background: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
 }
-
-/* ألوان خلفية البطاقات */
-/*.card:nth-child(1) {
-
-    background: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
-}
-
-.card:nth-child(2) {
-    background: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
-}
-
-.card:nth-child(3) {
-    background: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
-}
-
-.card:nth-child(4) {
-    background: linear-gradient(149deg, #192247 0%, #210e17 96.86%);
-}*/
 
 .card h2 {
     font-size: 1.5em;
@@ -457,8 +365,8 @@
     padding: 15px;
     height: 80px;
     cursor: pointer;
-    /* background: linear-gradient(to right, black, rgba(255, 255, 255, 0.521)); */
-    background: rgb(48, 47, 47);
+    background: linear-gradient(to right, black, rgba(255, 255, 255, 0.521));
+    /* background: rgb(48, 47, 47); */
     color: #ffffff;
     border-radius: 2px;
     position: relative;
@@ -476,14 +384,8 @@
     position: absolute;
     right: 25px;
     font-size: 40px;
-   /* font-weight: bold;*/
     color: white;
 }
-
-/* Hover Effects */
-/*.question:hover::after {
-    color: #fff;
-}*/
 
 .faq-item.active .question::after {
     content: "x";
