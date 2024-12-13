@@ -42,8 +42,8 @@ header nav a:hover {
 .hero {
     text-align: center;
     padding: 100px 20px;
-    background-image: linear-gradient(to bottom, rgba(20, 20, 20, 0.7), #141414), 
-                      url('../images/ab');
+    background-image: linear-gradient(to bottom, rgba(20, 20, 20, 0.7), #141414);
+    background-color:grey;
     color: #ffffff;
 }
 
